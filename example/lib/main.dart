@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:z100_printer_plugin/z100_printer_plugin.dart';
 
@@ -24,7 +25,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    _z100PrinterPlugin.initPrinter();
   }
 
   void printImage() async {
@@ -49,6 +49,19 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: Column(
             children: [
+              ElevatedButton(
+                  onPressed: () async {
+                    String? value = await _z100PrinterPlugin.initPrinter();
+                    Fluttertoast.showToast(
+                        msg: "Value: $value",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.black45,
+                        textColor: Colors.white,
+                        fontSize: 16.0);
+                  },
+                  child: const Text("Init printer")),
               ElevatedButton(
                   onPressed: () {
                     printImage();

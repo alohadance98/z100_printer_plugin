@@ -12,8 +12,9 @@ class MethodChannelZ100PrinterPlugin extends Z100PrinterPluginPlatform {
   final methodChannel = const MethodChannel('z100_printer_plugin');
 
   @override
-  Future<Void?> initPrinter() async {
-    await methodChannel.invokeMethod<String>('initSdk');
+  Future<String?> initPrinter() async {
+    String? value = await methodChannel.invokeMethod<String>('initSdk');
+    return value;
   }
 
   @override

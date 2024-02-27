@@ -26,7 +26,7 @@ abstract class Z100PrinterPluginPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<Void?> initPrinter() {
+  Future<String?> initPrinter() {
     throw UnimplementedError('printText() has not been implemented.');
   }
 
