@@ -4,12 +4,18 @@ A new Flutter plugin project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+LƯU Ý:
+Để chạy được tính năng in khi release:
+B1: tạo 1 file proguard ở project và khai báo trong build.gradle ở tầng app.
+B2: sửa build.gradle tầng app như sau
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+buildTypes {
+    release {
+        // TODO: Add your own signing config for the release build.
+        // Signing with the debug keys for now, so `flutter run --release` works.
+        signingConfig signingConfigs.debug
+        shrinkResources false
+        minifyEnabled false
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+}
